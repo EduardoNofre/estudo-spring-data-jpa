@@ -2,7 +2,7 @@
 ## Configuração - Spring Datasource
 ##-----------------------------------------------------------
 server:
-  port: 7009
+  port: 7010
   servlet:
     context-path: /jpa-estudo
 spring:
@@ -19,7 +19,7 @@ spring:
             dialect: org.hibernate.dialect.H2Dialect
   datasource:
     platform: h2
-    url: jdbc:h2:mem:alunodb
+    url: jdbc:h2:mem:jpadb
     driverClassName: org.h2.Driver
     username: sa
     password: admin

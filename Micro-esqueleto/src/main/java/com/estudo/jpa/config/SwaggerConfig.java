@@ -21,7 +21,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.finance.app.controller")).paths(regex("/finance-app.*"))
+				.apis(RequestHandlerSelectors.basePackage("com.estudo.jpa.controller")).paths(regex("/jpa-estudo-controller-app.*"))
 				.build().apiInfo(metaInfo());
 	}
 

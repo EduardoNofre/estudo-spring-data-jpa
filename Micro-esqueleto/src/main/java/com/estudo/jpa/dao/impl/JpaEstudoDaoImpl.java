@@ -1,5 +1,5 @@
 package com.estudo.jpa.dao.impl;
 
-public class DaoImpl {
+public class JpaEstudoDaoImpl {
 
 }

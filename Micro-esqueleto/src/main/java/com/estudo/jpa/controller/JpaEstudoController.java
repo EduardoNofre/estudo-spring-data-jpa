@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -13,32 +12,37 @@ import io.swagger.annotations.Api;
 @Api(value = "/v1/jpa", description = " JPA ESTUDO ")
 @RestController
 @Validated
-@RequestMapping("/finance-app")
+@RequestMapping("/jpa-estudo-controller-app")
 public class JpaEstudoController {
 
 	
-	@GetMapping(value = "path")
-	public void getMethodJPA(@RequestParam String param) {
+	@GetMapping(value = "getMethodJPA")
+	public void getMethodJPA(@PathVariable Long id, @PathVariable String nome,@PathVariable int idade) {
 
 	}
 	
-	@GetMapping(value = "path")
-	public void getMethodJPANativeQuery(@RequestParam String param) {
+	@GetMapping(value = "/getMethodJPANativeQuery/{id}/nome{nome}/idade{idade}")
+	public void getMethodJPANativeQuery(@PathVariable Long id, @PathVariable String nome,@PathVariable int idade) {
 
 	}
 	
-	@GetMapping(value = "path")
-	public void getMethodJPAQuery(@RequestParam String param) {
+	@GetMapping(value = "/getMethodJPAQuery/{id}/nome{nome}/idade{idade}")
+	public void getMethodJPAQuery(@PathVariable Long id, @PathVariable String nome,@PathVariable int idade) {
 
 	}
 
-	@GetMapping(value = "path")
-	public void getMethodJPACritiria(@RequestParam String param) {
+	@GetMapping(value = "/getMethodJPACritiria/{id}/nome{nome}/idade{idade}")
+	public void getMethodJPACritiria(@PathVariable Long id, @PathVariable String nome,@PathVariable int idade) {
+
+	}
+	
+	@GetMapping(value = "/getMethodJPASpec/{id}/nome{nome}/idade{idade}")
+	public void getMethodJPASpec(@PathVariable Long id, @PathVariable String nome,@PathVariable int idade) {
 
 	}
 
-	@PutMapping(value = "path/{id}")
-	public void putMethodJPASpec(@PathVariable String id) {
+	@PutMapping(value = "/putMethodJPASpec/{id}/nome{nome}/idade{idade}")
+	public void putMethodJPASave(@PathVariable Long id, @PathVariable String nome,@PathVariable int idade) {
 
 	}	
 }
