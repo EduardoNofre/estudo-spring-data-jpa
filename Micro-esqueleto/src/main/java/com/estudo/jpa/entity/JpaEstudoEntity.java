@@ -11,11 +11,11 @@ import lombok.Data;
 @javax.persistence.Entity
 @Data
 @Table(name = "funcionario")
-public class FuncionarioEntity {
+public class JpaEstudoEntity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true, nullable = false)
 	private Long id;
 	private String nome;
 	private int idade;
