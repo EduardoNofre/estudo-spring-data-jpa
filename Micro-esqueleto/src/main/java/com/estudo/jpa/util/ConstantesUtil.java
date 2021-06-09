@@ -1,4 +1,4 @@
-package com.example.Microesqueleto.util;
+package com.estudo.jpa.util;
 
 public class ConstantesUtil {
 

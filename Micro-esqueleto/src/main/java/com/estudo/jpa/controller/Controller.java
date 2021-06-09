@@ -1,4 +1,4 @@
-package com.example.Microesqueleto.controller;
+package com.estudo.jpa.controller;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,8 +1,8 @@
-package com.example.Microesqueleto.config;
+package com.estudo.jpa.config;
 
 
-import static com.example.Microesqueleto.util.ConstantesUtil.OPTIONS;
-import static com.example.Microesqueleto.util.ConstantesUtil.CHARSET_UTF_8;
+import static com.estudo.jpa.util.ConstantesUtil.CHARSET_UTF_8;
+import static com.estudo.jpa.util.ConstantesUtil.OPTIONS;
 
 import java.io.IOException;
 

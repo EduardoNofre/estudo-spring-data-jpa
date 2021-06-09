@@ -1,8 +1,8 @@
-package com.example.Microesqueleto.dao;
+package com.estudo.jpa.repository;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Dao {
+public interface repository {
 
 }

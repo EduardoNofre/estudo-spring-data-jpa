@@ -1,4 +1,4 @@
-package com.example.Microesqueleto.config;
+package com.estudo.jpa.config;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 

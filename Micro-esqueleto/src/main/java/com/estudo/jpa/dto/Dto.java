@@ -1,4 +1,4 @@
-package com.example.Microesqueleto.dto;
+package com.estudo.jpa.dto;
 
 import lombok.Data;
 

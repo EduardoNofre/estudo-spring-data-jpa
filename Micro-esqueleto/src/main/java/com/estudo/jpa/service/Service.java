@@ -1,4 +1,4 @@
-package com.example.Microesqueleto.service;
+package com.estudo.jpa.service;
 
 @org.springframework.stereotype.Service
 public class Service {

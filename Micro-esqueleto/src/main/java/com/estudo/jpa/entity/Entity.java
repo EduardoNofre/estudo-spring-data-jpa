@@ -1,4 +1,4 @@
-package com.example.Microesqueleto.entity;
+package com.estudo.jpa.entity;
 
 
 
