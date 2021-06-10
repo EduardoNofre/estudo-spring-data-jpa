@@ -25,52 +25,75 @@ public class JpaEstudoController {
 	@Autowired
 	private JpaEstudoService jpaEstudoService;
 	
-	@GetMapping(value = "/getMethodJPAbusca/id/{id}")
+	@GetMapping(value = "/JPAbusca/id/{id}")
 	@ApiOperation(value = "Busca utilizando jpa repository simples", response = ResponseEntity.class)
-	public ResponseEntity<JpaEstudoDto>  getMethodJPA(@PathVariable Long id) {
+	public ResponseEntity<JpaEstudoDto>  jPA(@PathVariable Long id) {
 
 		return new ResponseEntity<JpaEstudoDto>(jpaEstudoService.jpaBusca(id), HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/getMethodJPANativeQuery/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@GetMapping(value = "/JPANativeQuery/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando native query ", response = ResponseEntity.class)
-	public ResponseEntity<List<JpaEstudoDto>> getMethodJPANativeQuery(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<List<JpaEstudoDto>> jPANativeQuery(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
-		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaNativeQuery(id, nome, idade, cidade, telefone), HttpStatus.OK);
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaNativeQueryJpql(id, nome, idade, cidade, telefone), HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/getMethodJPAQuery/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
-	@ApiOperation(value = "Busca utilizando @Query", response = ResponseEntity.class)
-	public ResponseEntity<List<JpaEstudoDto>>  getMethodJPAQuery(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	@GetMapping(value = "/JPAQuery1/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@ApiOperation(value = "Busca utilizando @Query exemplo 1", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>  jPAQueryJpql1(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
-		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaQuery(id, nome, idade, cidade, telefone), HttpStatus.OK);
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaQueryJpql1(id, nome, idade, cidade, telefone), HttpStatus.OK);
 
 	}
+	
+	@GetMapping(value = "/JPAQuery2/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@ApiOperation(value = "Busca utilizando @Query exemplo 2", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>  JPAQueryJpql2(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
-	@GetMapping(value = "/getMethodJPACritiria/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaQueryJpql2(id, nome, idade, cidade, telefone), HttpStatus.OK);
+
+	}
+	
+	@GetMapping(value = "/JPAXML/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@ApiOperation(value = "Busca utilizando XML ", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>  jPAXML(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaXML(id, nome, idade, cidade, telefone), HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/implRepository/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@ApiOperation(value = "Busca implementendo repository ", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>  jPAImplementendoRepository(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jPAImplementandoRepository(id, nome, idade, cidade, telefone), HttpStatus.OK);
+	}
+	
+	
+	@GetMapping(value = "/JPACritiria/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando Critiria ", response = ResponseEntity.class)
-	public ResponseEntity<?>  getMethodJPACritiria(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<?>  jPACritiria(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
 		return null;
 	}
 	
-	@GetMapping(value = "/getMethodJPASpec/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@GetMapping(value = "/JPASpec/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando specification jpa ", response = ResponseEntity.class)
-	public ResponseEntity<?>  getMethodJPASpec(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<?>  jPASpec(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
 		return null;
 	}
 	
-	@GetMapping(value = "/getMethodJPAprojection/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@GetMapping(value = "/JPAprojection/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando specification jpa ", response = ResponseEntity.class)
-	public ResponseEntity<?>getMethodJPAprojection(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<?>jPAprojection(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
 		return null;
 	}
 
 	@PutMapping(value = "/putMethodJPASpec/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Save basico ", response = ResponseEntity.class)
-	public ResponseEntity<JpaEstudoDto>  putMethodJPASave(@PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<JpaEstudoDto>  jPASave(@PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
 		return new ResponseEntity<>(jpaEstudoService.jpaSave(nome, idade, cidade, telefone), HttpStatus.OK);
 	}	

@@ -62,9 +62,29 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 	}
 
 	@Override
-	public List<JpaEstudoEntity> jpaQueryDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {
+	public List<JpaEstudoEntity> jpaQueryJpqlDaoBusca1(Long id, String nome, int idade, String cidade, String telefone) {
 
-		return jpaEstudoRepository.BuscatodosNativeQuery(nome,idade,cidade);
+		return jpaEstudoRepository.buscatodosJpqlQuery1(nome,idade,cidade);
+	}
+	
+	@Override
+	public List<JpaEstudoEntity> jpaQueryJpqlDaoBusca2(Long id, String nome, int idade, String cidade, String telefone) {
+
+		return jpaEstudoRepository.buscatodosJpqlQuery2(nome,idade,cidade);
+	}
+
+	@Override
+	public List<JpaEstudoEntity> jpaXMLDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {
+
+		return jpaEstudoRepository.buscatodosXMl(nome, idade, cidade);
+
+	}
+	
+		
+	@Override
+	public List<JpaEstudoEntity> jpaImpl_Repository(Long id, String nome, int idade, String cidade, String telefone) {
+	
+		return jpaEstudoRepository.jpaImplRepository(nome, idade, cidade);
 	}
 
 	@Override
