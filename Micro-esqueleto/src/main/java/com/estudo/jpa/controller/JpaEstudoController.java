@@ -69,6 +69,13 @@ public class JpaEstudoController {
 		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jPAImplementandoRepository(id, nome, idade, cidade, telefone), HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/jPAQueryDinamica/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@ApiOperation(value = "Busca utilizando Exemplo 1 query dinamica ", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>  jPAQueryDinamica(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jPAQueryDinamica(id, nome, idade, cidade, telefone), HttpStatus.OK);
+	}
+	
 	
 	@GetMapping(value = "/JPACritiria/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando Critiria ", response = ResponseEntity.class)

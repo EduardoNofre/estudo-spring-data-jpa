@@ -77,7 +77,6 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 	public List<JpaEstudoEntity> jpaXMLDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {
 
 		return jpaEstudoRepository.buscatodosXMl(nome, idade, cidade);
-
 	}
 	
 		
@@ -85,6 +84,13 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 	public List<JpaEstudoEntity> jpaImpl_Repository(Long id, String nome, int idade, String cidade, String telefone) {
 	
 		return jpaEstudoRepository.jpaImplRepository(nome, idade, cidade);
+	}
+
+	
+	@Override
+	public List<JpaEstudoEntity> jPAQueryDinamica(Long id, String nome, int idade, String cidade, String telefone) {
+	
+		return jpaEstudoRepository.jpaQueryDinamica(nome, idade, cidade);
 	}
 
 	@Override

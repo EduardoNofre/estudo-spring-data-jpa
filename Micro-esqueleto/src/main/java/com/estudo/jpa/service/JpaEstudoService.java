@@ -127,8 +127,32 @@ public class JpaEstudoService {
 		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
 	}
 
+	/**
+	 * Exemplo query dinamica
+	 * @param id
+	 * @param nome
+	 * @param idade
+	 * @param cidade
+	 * @param telefone
+	 * @return
+	 */
+	
+	public List<JpaEstudoDto> jPAQueryDinamica(Long id, String nome, int idade, String cidade, String telefone) {
 
-	public List<JpaEstudoEntity> jpaCritiria(Long id, String nome, int idade, String cidade, String telefone) {
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPAQueryDinamica(id, nome, idade, cidade, telefone);
+		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
+	}
+	
+	/**
+	 * exemplo 1 de Criteria 
+	 * @param id
+	 * @param nome
+	 * @param idade
+	 * @param cidade
+	 * @param telefone
+	 * @return
+	 */
+	public List<JpaEstudoEntity> jpaCriteria(Long id, String nome, int idade, String cidade, String telefone) {
 
 		return null;
 	}

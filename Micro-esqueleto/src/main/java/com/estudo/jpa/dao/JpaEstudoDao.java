@@ -22,6 +22,8 @@ public interface JpaEstudoDao {
 	List<JpaEstudoEntity> jpaXMLDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 	
 	List<JpaEstudoEntity> jpaImpl_Repository(Long id, String nome, int idade, String cidade, String telefone);
+	
+	List<JpaEstudoEntity> jPAQueryDinamica(Long id, String nome, int idade, String cidade, String telefone);	
 
 	List<JpaEstudoEntity> jpaCritiriaDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 
