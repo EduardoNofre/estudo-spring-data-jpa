@@ -1,24 +1,27 @@
 package com.estudo.jpa.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import com.estudo.jpa.dto.JpaEstudoDto;
 import com.estudo.jpa.entity.JpaEstudoEntity;
 
 @Repository
- public interface JpaEstudoDao {
+public interface JpaEstudoDao {
 
-	List<JpaEstudoEntity> jpaDaoBusca(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade);
+	Optional<JpaEstudoEntity> jpaDaoBusca(Long id);
 
-	List<JpaEstudoEntity> jpaNativeQueryDaoBusca(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade);
+	List<JpaEstudoDto> jpaNativeQueryDaoBusca(JpaEstudoEntity jpaEstudoEntity);
 
-	List<JpaEstudoEntity> jpaQueryDaoBusca(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade);
+	List<JpaEstudoEntity> jpaQueryDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 
-	List<JpaEstudoEntity> jpaCritiriaDaoBusca(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade);
+	List<JpaEstudoEntity> jpaCritiriaDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 
-	List<JpaEstudoEntity> jpaSpecDaoBusca(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade);
+	List<JpaEstudoEntity> jpaSpecDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 
-	JpaEstudoEntity jpaSaveDao(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade);
+	JpaEstudoEntity jpaSaveDao(JpaEstudoEntity jpaEstudoEntity);
+	
+	boolean jpaExisteDao(Long id);
 }

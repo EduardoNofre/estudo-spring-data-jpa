@@ -10,7 +10,7 @@ import lombok.Data;
 
 @javax.persistence.Entity
 @Data
-@Table(name = "funcionario")
+@Table(name = "JpaEstudoEntity")
 public class JpaEstudoEntity {
 
 	@Id
