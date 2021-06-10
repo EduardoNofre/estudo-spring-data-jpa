@@ -54,6 +54,16 @@ public class JpaEstudoService {
 		return jpaEstudoDao.jpaNativeQueryDaoBusca(modelMapper.map(jpaEstudoDto, JpaEstudoEntity.class));
 	}
 
+	/**
+	 * 
+	 * Usando @Query java annotation exemplo
+	 * @param id
+	 * @param nome
+	 * @param idade
+	 * @param cidade
+	 * @param telefone
+	 * @return
+	 */
 	public List<JpaEstudoDto> jpaQuery(Long id, String nome, int idade, String cidade, String telefone) {
 
 		List<JpaEstudoEntity> listJpaEstudoEntity = jpaEstudoDao.jpaQueryDaoBusca(id, nome, idade, cidade, telefone);
@@ -82,7 +92,9 @@ public class JpaEstudoService {
 		jpaEstudoDto.setIdade(idade);
 		jpaEstudoDto.setCidade(cidade);
 		jpaEstudoDto.setTelefone(telefone);
+		
 		JpaEstudoEntity jpaEstudoEntity = jpaEstudoDao.jpaSaveDao(modelMapper.map(jpaEstudoDto, JpaEstudoEntity.class));
+		
 		return modelMapper.map(jpaEstudoEntity, JpaEstudoDto.class);
 	}
 
