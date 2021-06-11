@@ -123,7 +123,7 @@ public class JpaEstudoService {
 	 */
 	public List<JpaEstudoDto> jPAImplementandoRepository(Long id, String nome, int idade, String cidade, String telefone) {
 
-		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jpaImpl_Repository(id, nome, idade, cidade, telefone);
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jpaImplDaoRepository(id, nome, idade, cidade, telefone);
 		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
 	}
 
@@ -139,12 +139,12 @@ public class JpaEstudoService {
 	
 	public List<JpaEstudoDto> jPAQueryDinamica(Long id, String nome, int idade, String cidade, String telefone) {
 
-		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPAQueryDinamica(id, nome, idade, cidade, telefone);
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPAQueryDaoDinamica(id, nome, idade, cidade, telefone);
 		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
 	}
 	
 	/**
-	 * exemplo 1 de Criteria 
+	 * exemplo 1 de Criteria simples
 	 * @param id
 	 * @param nome
 	 * @param idade
@@ -152,9 +152,11 @@ public class JpaEstudoService {
 	 * @param telefone
 	 * @return
 	 */
-	public List<JpaEstudoEntity> jpaCriteria(Long id, String nome, int idade, String cidade, String telefone) {
-
-		return null;
+	public List<JpaEstudoDto> jpaCriteria(Long id, String nome, int idade, String cidade, String telefone) {
+		
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jpaCritiriaDaoBusca(id, nome, idade, cidade, telefone);
+		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
+		
 	}
 
 	public List<JpaEstudoEntity> jpaSpec(Long id, String nome, int idade, String cidade, String telefone) {

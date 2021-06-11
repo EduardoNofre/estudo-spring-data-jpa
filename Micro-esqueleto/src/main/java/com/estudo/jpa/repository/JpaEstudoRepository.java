@@ -23,5 +23,7 @@ public interface JpaEstudoRepository extends JpaRepository<JpaEstudoEntity, Long
 	List<JpaEstudoEntity> jpaImplRepository(String nome, int idade, String cidade);
 
 	List<JpaEstudoEntity> jpaQueryDinamica(String nome, int idade, String cidade);
+	
+	List<JpaEstudoEntity> buscaJpaCritiria(String nome, int idade, String cidade);
 
 }

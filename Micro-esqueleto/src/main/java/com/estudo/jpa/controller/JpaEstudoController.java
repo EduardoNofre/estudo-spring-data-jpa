@@ -78,10 +78,11 @@ public class JpaEstudoController {
 	
 	
 	@GetMapping(value = "/JPACritiria/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
-	@ApiOperation(value = "Busca utilizando Critiria ", response = ResponseEntity.class)
-	public ResponseEntity<?>  jPACritiria(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	@ApiOperation(value = "Busca utilizando Critiria exemplo simples", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>  jPACritiria(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
-		return null;
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaCriteria(id, nome, idade, cidade, telefone), HttpStatus.OK);
+
 	}
 	
 	@GetMapping(value = "/JPASpec/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")

@@ -3,7 +3,6 @@ package com.estudo.jpa.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -43,6 +42,7 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 		query.append(" AND idade = " + jpaEstudoEntity.getIdade());
 		query.append(" AND cidade = '" + jpaEstudoEntity.getCidade()+"'");
 		
+		@SuppressWarnings("unchecked")
 		List<Object[]> listaNative =  entityManager.createNativeQuery(query.toString()).getResultList();
 		
 		List<JpaEstudoDto> jpaEstudoDtoArray = new ArrayList<JpaEstudoDto>();
@@ -81,14 +81,14 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 	
 		
 	@Override
-	public List<JpaEstudoEntity> jpaImpl_Repository(Long id, String nome, int idade, String cidade, String telefone) {
+	public List<JpaEstudoEntity> jpaImplDaoRepository(Long id, String nome, int idade, String cidade, String telefone) {
 	
 		return jpaEstudoRepository.jpaImplRepository(nome, idade, cidade);
 	}
 
 	
 	@Override
-	public List<JpaEstudoEntity> jPAQueryDinamica(Long id, String nome, int idade, String cidade, String telefone) {
+	public List<JpaEstudoEntity> jPAQueryDaoDinamica(Long id, String nome, int idade, String cidade, String telefone) {
 	
 		return jpaEstudoRepository.jpaQueryDinamica(nome, idade, cidade);
 	}
@@ -96,7 +96,7 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 	@Override
 	public List<JpaEstudoEntity> jpaCritiriaDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {
 
-		return null;
+		return jpaEstudoRepository.buscaJpaCritiria(nome, idade, cidade);
 
 	}
 

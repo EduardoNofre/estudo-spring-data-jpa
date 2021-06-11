@@ -3,12 +3,10 @@ package com.estudo.jpa.dao;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Repository;
-
 import com.estudo.jpa.dto.JpaEstudoDto;
 import com.estudo.jpa.entity.JpaEstudoEntity;
 
-@Repository
+
 public interface JpaEstudoDao {
 
 	Optional<JpaEstudoEntity> jpaDaoBusca(Long id);
@@ -21,9 +19,9 @@ public interface JpaEstudoDao {
 	
 	List<JpaEstudoEntity> jpaXMLDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 	
-	List<JpaEstudoEntity> jpaImpl_Repository(Long id, String nome, int idade, String cidade, String telefone);
+	List<JpaEstudoEntity> jpaImplDaoRepository(Long id, String nome, int idade, String cidade, String telefone);
 	
-	List<JpaEstudoEntity> jPAQueryDinamica(Long id, String nome, int idade, String cidade, String telefone);	
+	List<JpaEstudoEntity> jPAQueryDaoDinamica(Long id, String nome, int idade, String cidade, String telefone);	
 
 	List<JpaEstudoEntity> jpaCritiriaDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 

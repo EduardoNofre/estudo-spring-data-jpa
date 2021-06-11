@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -52,7 +54,20 @@ public class JpaEstudoRepositoryImpl {
 		parametros.forEach((chave,valor) -> query.setParameter(chave,valor));
 		
 		return query.getResultList();
+	}
+	
+	
+	public List<JpaEstudoEntity> buscaJpaCritiria() {
 		
+//		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+//		
+//		CriteriaQuery<JpaEstudoEntity> criteria = builder.createQuery(JpaEstudoEntity.class);
+//		
+//		TypedQuery<JpaEstudoEntity> query = entityManager.createQuery(criteria);
+//		
+//		return query.getResultList();
+		
+		return null;
 
 	}
 
