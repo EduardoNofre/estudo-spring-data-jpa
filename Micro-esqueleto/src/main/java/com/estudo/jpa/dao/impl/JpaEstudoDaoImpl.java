@@ -99,6 +99,12 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 		return jpaEstudoRepository.buscaJpaCritiria(nome, idade, cidade);
 
 	}
+	
+	@Override
+	public List<JpaEstudoEntity> jPACritiriaDaoDinamica(Long id, String nome, int idade, String cidade,String telefone) {
+
+		return jpaEstudoRepository.jPACritiriaDinamica(nome, idade, cidade);
+	}
 
 	@Override
 	public List<JpaEstudoEntity> jpaSpecDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {

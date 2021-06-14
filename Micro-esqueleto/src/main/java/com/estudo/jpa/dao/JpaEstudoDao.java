@@ -24,6 +24,8 @@ public interface JpaEstudoDao {
 	List<JpaEstudoEntity> jPAQueryDaoDinamica(Long id, String nome, int idade, String cidade, String telefone);	
 
 	List<JpaEstudoEntity> jpaCritiriaDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
+	
+	List<JpaEstudoEntity> jPACritiriaDaoDinamica(Long id, String nome, int idade, String cidade, String telefone);
 
 	List<JpaEstudoEntity> jpaSpecDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 

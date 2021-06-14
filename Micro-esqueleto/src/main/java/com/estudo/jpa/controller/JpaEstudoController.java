@@ -85,11 +85,12 @@ public class JpaEstudoController {
 
 	}
 	
-	@GetMapping(value = "/JPASpec/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
-	@ApiOperation(value = "Busca utilizando specification jpa ", response = ResponseEntity.class)
-	public ResponseEntity<?>  jPASpec(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	@GetMapping(value = "/jPACritiriaDinamica/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@ApiOperation(value = "Busca utilizando Critiria montagem dinamica", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>  jPACritiriaDinamica(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
-		return null;
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jPACritiriaDinamica(id, nome, idade, cidade, telefone), HttpStatus.OK);
+
 	}
 	
 	@GetMapping(value = "/JPAprojection/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")

@@ -155,10 +155,15 @@ public class JpaEstudoService {
 	public List<JpaEstudoDto> jpaCriteria(Long id, String nome, int idade, String cidade, String telefone) {
 		
 		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jpaCritiriaDaoBusca(id, nome, idade, cidade, telefone);
-		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
-		
+		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());	
 	}
-
+	
+	public List<JpaEstudoDto> jPACritiriaDinamica(Long id, String nome, int idade, String cidade, String telefone) {
+		
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPACritiriaDaoDinamica(id, nome, idade, cidade, telefone);
+		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
+	}
+	
 	public List<JpaEstudoEntity> jpaSpec(Long id, String nome, int idade, String cidade, String telefone) {
 
 		return null;
