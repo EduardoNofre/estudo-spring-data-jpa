@@ -14,6 +14,8 @@ import com.estudo.jpa.dao.JpaEstudoDao;
 import com.estudo.jpa.dto.JpaEstudoDto;
 import com.estudo.jpa.entity.JpaEstudoEntity;
 import com.estudo.jpa.repository.JpaEstudoRepository;
+import com.estudo.jpa.spec.JpaEstudoCidadeLikeSpec;
+import com.estudo.jpa.spec.JpaEstudoNomeLikeSpec;
 
 @Repository
 public class JpaEstudoDaoImpl implements JpaEstudoDao {
@@ -26,7 +28,6 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 
 	@Override
 	public Optional<JpaEstudoEntity> jpaDaoBusca(Long id) {
-
 		return jpaEstudoRepository.findById(id);
 
 	}
@@ -63,66 +64,55 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 
 	@Override
 	public List<JpaEstudoEntity> jpaQueryJpqlDaoBusca1(Long id, String nome, int idade, String cidade, String telefone) {
-
 		return jpaEstudoRepository.buscatodosJpqlQuery1(nome,idade,cidade);
 	}
 	
 	@Override
 	public List<JpaEstudoEntity> jpaQueryJpqlDaoBusca2(Long id, String nome, int idade, String cidade, String telefone) {
-
 		return jpaEstudoRepository.buscatodosJpqlQuery2(nome,idade,cidade);
 	}
 
 	@Override
 	public List<JpaEstudoEntity> jpaXMLDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {
-
 		return jpaEstudoRepository.buscatodosXMl(nome, idade, cidade);
 	}
 	
 		
 	@Override
 	public List<JpaEstudoEntity> jpaImplDaoRepository(Long id, String nome, int idade, String cidade, String telefone) {
-	
 		return jpaEstudoRepository.jpaImplRepository(nome, idade, cidade);
 	}
 
 	
 	@Override
-	public List<JpaEstudoEntity> jPAQueryDaoDinamica(Long id, String nome, int idade, String cidade, String telefone) {
-	
+	public List<JpaEstudoEntity> jPAQueryDaoDinamicaBusca(Long id, String nome, int idade, String cidade, String telefone) {
 		return jpaEstudoRepository.jpaQueryDinamica(nome, idade, cidade);
 	}
 
 	@Override
 	public List<JpaEstudoEntity> jpaCritiriaDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {
-
 		return jpaEstudoRepository.buscaJpaCritiria(nome, idade, cidade);
 
 	}
 	
 	@Override
-	public List<JpaEstudoEntity> jPACritiriaDaoDinamica(Long id, String nome, int idade, String cidade,String telefone) {
-
+	public List<JpaEstudoEntity> jPACritiriaDaoDinamicaBusca(Long id, String nome, int idade, String cidade,String telefone) {
 		return jpaEstudoRepository.jPACritiriaDinamica(nome, idade, cidade);
 	}
 
 	@Override
-	public List<JpaEstudoEntity> jpaSpecDaoBusca(Long id, String nome, int idade, String cidade, String telefone) {
-
-		return null;
-
+	public List<JpaEstudoEntity> jpaDaoSpecBusca(JpaEstudoNomeLikeSpec nomeSpec, JpaEstudoCidadeLikeSpec cidadeSpec) {
+		return jpaEstudoRepository.findAll(nomeSpec.and(cidadeSpec));
 	}
 
 	@Override
 	public JpaEstudoEntity jpaSaveDao(JpaEstudoEntity jpaEstudoEntity) {
-
 		return jpaEstudoRepository.save(jpaEstudoEntity);
 
 	}
 	
 	@Override
 	public boolean jpaExisteDao(Long id) {
-
 		if (jpaEstudoRepository.findById(id).isPresent()) {
 
 			return true;

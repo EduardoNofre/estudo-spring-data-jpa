@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.estudo.jpa.dao.JpaEstudoDao;
 import com.estudo.jpa.dto.JpaEstudoDto;
 import com.estudo.jpa.entity.JpaEstudoEntity;
+import com.estudo.jpa.spec.JpaEstudoCidadeLikeSpec;
+import com.estudo.jpa.spec.JpaEstudoNomeLikeSpec;
 
 @org.springframework.stereotype.Service
 public class JpaEstudoService {
@@ -136,13 +138,13 @@ public class JpaEstudoService {
 	 * @param telefone
 	 * @return
 	 */
-	
+
 	public List<JpaEstudoDto> jPAQueryDinamica(Long id, String nome, int idade, String cidade, String telefone) {
 
-		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPAQueryDaoDinamica(id, nome, idade, cidade, telefone);
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPAQueryDaoDinamicaBusca(id, nome, idade, cidade, telefone);
 		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
 	}
-	
+
 	/**
 	 * exemplo 1 de Criteria simples
 	 * @param id
@@ -153,26 +155,49 @@ public class JpaEstudoService {
 	 * @return
 	 */
 	public List<JpaEstudoDto> jpaCriteria(Long id, String nome, int idade, String cidade, String telefone) {
-		
+
 		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jpaCritiriaDaoBusca(id, nome, idade, cidade, telefone);
 		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());	
 	}
-	
+
+	/**
+	 * exemplo 1 de Criteria dinamica
+	 * @param id
+	 * @param nome
+	 * @param idade
+	 * @param cidade
+	 * @param telefone
+	 * @return
+	 */
 	public List<JpaEstudoDto> jPACritiriaDinamica(Long id, String nome, int idade, String cidade, String telefone) {
-		
-		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPACritiriaDaoDinamica(id, nome, idade, cidade, telefone);
+
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jPACritiriaDaoDinamicaBusca(id, nome, idade, cidade, telefone);
 		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
 	}
-	
-	public List<JpaEstudoEntity> jpaSpec(Long id, String nome, int idade, String cidade, String telefone) {
 
-		return null;
+	/**
+	 * Exemplo jpa JpaSpecification exemplo
+	 * 
+	 * @param nomeSpec
+	 * @param cidadeSpec
+	 * @return
+	 */
+	public List<JpaEstudoDto> jpaSpec(JpaEstudoNomeLikeSpec nomeSpec, JpaEstudoCidadeLikeSpec cidadeSpec) {
+
+		List<JpaEstudoEntity> listJpaEstudoEntityXMl = jpaEstudoDao.jpaDaoSpecBusca(nomeSpec,cidadeSpec);		
+		return modelMapper.map(listJpaEstudoEntityXMl, new TypeToken<List<JpaEstudoDto>>() {}.getType());
 	}
-
-	public List<JpaEstudoEntity> jpaJpql(Long id, String nome, int idade, String cidade, String telefone) {
-
-		return null;
-	}
+	/**
+	 * 
+	 * metodo simples para persistncia de dados
+	 * 
+	 * @param nome
+	 * @param idade
+	 * @param cidade
+	 * @param telefone
+	 * @return
+	 * 
+	 */
 
 	public JpaEstudoDto jpaSave(String nome, int idade, String cidade, String telefone) {
 

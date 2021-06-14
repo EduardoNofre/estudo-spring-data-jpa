@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.estudo.jpa.dto.JpaEstudoDto;
 import com.estudo.jpa.service.JpaEstudoService;
+import com.estudo.jpa.spec.JpaEstudoCidadeLikeSpec;
+import com.estudo.jpa.spec.JpaEstudoNomeLikeSpec;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -87,23 +89,35 @@ public class JpaEstudoController {
 	
 	@GetMapping(value = "/jPACritiriaDinamica/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando Critiria montagem dinamica", response = ResponseEntity.class)
-	public ResponseEntity<List<JpaEstudoDto>>  jPACritiriaDinamica(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<List<JpaEstudoDto>>jPACritiriaDinamica(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
 		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jPACritiriaDinamica(id, nome, idade, cidade, telefone), HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/JPASpec/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	@ApiOperation(value = "Busca utilizando specification jpa", response = ResponseEntity.class)
+	public ResponseEntity<List<JpaEstudoDto>>JPASpec(@PathVariable String nome, @PathVariable String cidade) {
 
+		JpaEstudoNomeLikeSpec nomeSpec = new JpaEstudoNomeLikeSpec(nome);
+		JpaEstudoCidadeLikeSpec cidadeSpec = new JpaEstudoCidadeLikeSpec(cidade);
+		
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaSpec(nomeSpec, cidadeSpec), HttpStatus.OK);
+		
 	}
 	
 	@GetMapping(value = "/JPAprojection/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
-	@ApiOperation(value = "Busca utilizando specification jpa ", response = ResponseEntity.class)
+	@ApiOperation(value = "Busca utilizando projection jpa  ", response = ResponseEntity.class)
 	public ResponseEntity<?>jPAprojection(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
 		return null;
 	}
-
-	@PutMapping(value = "/putMethodJPASpec/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
+	
+	
+	@PutMapping(value = "/save/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Save basico ", response = ResponseEntity.class)
-	public ResponseEntity<JpaEstudoDto>  jPASave(@PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<JpaEstudoDto>jPASave(@PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
 
 		return new ResponseEntity<>(jpaEstudoService.jpaSave(nome, idade, cidade, telefone), HttpStatus.OK);
 	}	
+	
 }

@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import com.estudo.jpa.dto.JpaEstudoDto;
 import com.estudo.jpa.entity.JpaEstudoEntity;
+import com.estudo.jpa.spec.JpaEstudoCidadeLikeSpec;
+import com.estudo.jpa.spec.JpaEstudoNomeLikeSpec;
 
 
 public interface JpaEstudoDao {
@@ -21,13 +23,13 @@ public interface JpaEstudoDao {
 	
 	List<JpaEstudoEntity> jpaImplDaoRepository(Long id, String nome, int idade, String cidade, String telefone);
 	
-	List<JpaEstudoEntity> jPAQueryDaoDinamica(Long id, String nome, int idade, String cidade, String telefone);	
+	List<JpaEstudoEntity> jPAQueryDaoDinamicaBusca(Long id, String nome, int idade, String cidade, String telefone);	
 
 	List<JpaEstudoEntity> jpaCritiriaDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
 	
-	List<JpaEstudoEntity> jPACritiriaDaoDinamica(Long id, String nome, int idade, String cidade, String telefone);
-
-	List<JpaEstudoEntity> jpaSpecDaoBusca(Long id, String nome, int idade, String cidade, String telefone);
+	List<JpaEstudoEntity> jPACritiriaDaoDinamicaBusca(Long id, String nome, int idade, String cidade, String telefone);
+	
+	List<JpaEstudoEntity> jpaDaoSpecBusca(JpaEstudoNomeLikeSpec nomeSpec, JpaEstudoCidadeLikeSpec cidadeSpec);	
 
 	JpaEstudoEntity jpaSaveDao(JpaEstudoEntity jpaEstudoEntity);
 	
