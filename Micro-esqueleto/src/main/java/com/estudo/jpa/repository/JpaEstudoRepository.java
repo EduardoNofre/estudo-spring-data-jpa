@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.estudo.jpa.entity.JpaEstudoEntity;
@@ -27,5 +28,8 @@ public interface JpaEstudoRepository extends JpaRepository<JpaEstudoEntity, Long
 	List<JpaEstudoEntity> buscaJpaCritiria(String nome, int idade, String cidade);
 
 	List<JpaEstudoEntity> jPACritiriaDinamica(String nome, int idade, String cidade);
+	
+	@Query(value = "SELECT nome, cidade FROM JPA_ESTUDO_ENTITY  where nome LIKE %:nome%  and cidade like %:cidade% ", nativeQuery = true)
+	List<Object[]> buscaNomeCidade(@Param("nome") String name,@Param("cidade") String cidade);
 
 }

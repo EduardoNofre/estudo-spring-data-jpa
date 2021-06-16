@@ -30,6 +30,8 @@ public interface JpaEstudoDao {
 	List<JpaEstudoEntity> jPACritiriaDaoDinamicaBusca(Long id, String nome, int idade, String cidade, String telefone);
 	
 	List<JpaEstudoEntity> jpaDaoSpecBusca(JpaEstudoNomeLikeSpec nomeSpec, JpaEstudoCidadeLikeSpec cidadeSpec);	
+	
+	List<Object[]> jpaDaoProjection(String nome, String cidade);
 
 	JpaEstudoEntity jpaSaveDao(JpaEstudoEntity jpaEstudoEntity);
 	

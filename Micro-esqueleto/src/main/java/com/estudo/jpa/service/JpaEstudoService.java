@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.estudo.jpa.dao.JpaEstudoDao;
 import com.estudo.jpa.dto.JpaEstudoDto;
 import com.estudo.jpa.entity.JpaEstudoEntity;
+import com.estudo.jpa.projections.JpaEstudoProjections;
 import com.estudo.jpa.spec.JpaEstudoCidadeLikeSpec;
 import com.estudo.jpa.spec.JpaEstudoNomeLikeSpec;
 
@@ -198,6 +199,13 @@ public class JpaEstudoService {
 	 * @return
 	 * 
 	 */
+	public List<JpaEstudoProjections> jpaProjection(String nome,String cidade) {
+		
+		List<Object[]> listJpaEstudoEntityXMl = jpaEstudoDao.jpaDaoProjection(nome, cidade);		
+		return modelMapper.map(listJpaEstudoEntityXMl.toArray(), new TypeToken<List<JpaEstudoProjections>>() {}.getType());
+	}
+
+	
 
 	public JpaEstudoDto jpaSave(String nome, int idade, String cidade, String telefone) {
 

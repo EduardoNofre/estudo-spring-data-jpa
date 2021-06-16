@@ -108,9 +108,14 @@ public class JpaEstudoDaoImpl implements JpaEstudoDao {
 	@Override
 	public JpaEstudoEntity jpaSaveDao(JpaEstudoEntity jpaEstudoEntity) {
 		return jpaEstudoRepository.save(jpaEstudoEntity);
-
 	}
 	
+	@Override
+	public List<Object[]> jpaDaoProjection(String nome, String cidade) {
+		
+		return jpaEstudoRepository.buscaNomeCidade(nome, cidade);
+	}
+
 	@Override
 	public boolean jpaExisteDao(Long id) {
 		if (jpaEstudoRepository.findById(id).isPresent()) {

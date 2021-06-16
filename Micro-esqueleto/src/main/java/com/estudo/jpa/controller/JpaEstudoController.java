@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.estudo.jpa.dto.JpaEstudoDto;
+import com.estudo.jpa.projections.JpaEstudoProjections;
 import com.estudo.jpa.service.JpaEstudoService;
 import com.estudo.jpa.spec.JpaEstudoCidadeLikeSpec;
 import com.estudo.jpa.spec.JpaEstudoNomeLikeSpec;
@@ -99,17 +100,16 @@ public class JpaEstudoController {
 	public ResponseEntity<List<JpaEstudoDto>>JPASpec(@PathVariable String nome, @PathVariable String cidade) {
 
 		JpaEstudoNomeLikeSpec nomeSpec = new JpaEstudoNomeLikeSpec(nome);
-		JpaEstudoCidadeLikeSpec cidadeSpec = new JpaEstudoCidadeLikeSpec(cidade);
-		
+		JpaEstudoCidadeLikeSpec cidadeSpec = new JpaEstudoCidadeLikeSpec(cidade);		
 		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaSpec(nomeSpec, cidadeSpec), HttpStatus.OK);
 		
 	}
 	
 	@GetMapping(value = "/JPAprojection/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando projection jpa  ", response = ResponseEntity.class)
-	public ResponseEntity<?>jPAprojection(@PathVariable Long id, @PathVariable String nome, @PathVariable int idade, @PathVariable String cidade, @PathVariable String telefone) {
+	public ResponseEntity<List<JpaEstudoProjections>>jpaProjection(@PathVariable String nome, @PathVariable String cidade) {
 
-		return null;
+		return new ResponseEntity<List<JpaEstudoProjections>>(jpaEstudoService.jpaProjection(nome, cidade), HttpStatus.OK);
 	}
 	
 	
