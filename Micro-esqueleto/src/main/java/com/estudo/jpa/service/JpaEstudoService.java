@@ -1,6 +1,8 @@
 package com.estudo.jpa.service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -199,10 +201,13 @@ public class JpaEstudoService {
 	 * @return
 	 * 
 	 */
-	public List<JpaEstudoProjections> jpaProjection(String nome,String cidade) {
+	public List<JpaEstudoDto> jpaProjection(String nome,String cidade) {
 		
-		List<Object[]> listJpaEstudoEntityXMl = jpaEstudoDao.jpaDaoProjection(nome, cidade);		
-		return modelMapper.map(listJpaEstudoEntityXMl.toArray(), new TypeToken<List<JpaEstudoProjections>>() {}.getType());
+		List<Object[]> arrayObject = jpaEstudoDao.jpaDaoProjection(nome, cidade);	
+		
+		List<JpaEstudoProjections> children = arrayObject.stream().map(indiceArray -> new JpaEstudoProjections(indiceArray[0].toString(),indiceArray[1].toString())).collect(Collectors.toList());
+		
+		return modelMapper.map(children, new TypeToken<List<JpaEstudoDto>>() {}.getType());
 	}
 
 	

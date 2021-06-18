@@ -107,9 +107,9 @@ public class JpaEstudoController {
 	
 	@GetMapping(value = "/JPAprojection/id/{id}/nome{nome}/idade{idade}/cidade{cidade}/telefone{telefone}")
 	@ApiOperation(value = "Busca utilizando projection jpa  ", response = ResponseEntity.class)
-	public ResponseEntity<List<JpaEstudoProjections>>jpaProjection(@PathVariable String nome, @PathVariable String cidade) {
+	public ResponseEntity<List<JpaEstudoDto>>jpaProjection(@PathVariable String nome, @PathVariable String cidade) {
 
-		return new ResponseEntity<List<JpaEstudoProjections>>(jpaEstudoService.jpaProjection(nome, cidade), HttpStatus.OK);
+		return new ResponseEntity<List<JpaEstudoDto>>(jpaEstudoService.jpaProjection(nome, cidade), HttpStatus.OK);
 	}
 	
 	
